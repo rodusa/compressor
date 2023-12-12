@@ -13,7 +13,7 @@ Compressor::Compressor(const std::string &arquivoTxtEntrada, const std::string &
 void Compressor::comprimirBinario()
 {
     auto dadosBinarios = lerArquivoParaBinario(arquivoTxtEntrada);
-    imprimirBits(dadosBinarios);
+    imprimirVetor16Bits(dadosBinarios);
     auto dadosComprimidos = compressData(dadosBinarios);
     escreverComprimidoParaArquivo(dadosComprimidos, arquivoCompactado);
 }
@@ -175,11 +175,12 @@ std::vector<bool> Compressor::descomprimirDados(const std::vector<std::string> &
         {
             std::string sequence = debitsDictionary[code];
             std::cout << "Sequencia: " << sequence << " ";
+            
             for (char bit : sequence)
             {
                 bool bitValue = (bit == '1');
                 dadosDescomprimidos.push_back(bitValue);
-                std::cout << bitValue; // Print each bit as it's added
+                //std::cout << bitValue; // Print each bit as it's added
             }
         }
         else
@@ -246,8 +247,10 @@ std::vector<std::string> Compressor::readarquivoCompactado(const std::string &no
     return dadosComprimidos;
 }
 
-void Compressor::imprimirBits(const std::vector<bool> &bits)
+void Compressor::imprimirVetor16Bits(const std::vector<bool> &bits)
 {
+    std::cout << "\n";
+    std::cout << "--------------- LEITURA DO VETOR (16 BITS): ---------------------" << std::endl;
     for (size_t i = 0; i < bits.size(); ++i)
     {
         std::cout << bits[i]; // Imprime o bit atual
