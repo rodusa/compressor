@@ -5,7 +5,7 @@
 #include <bitset>
 
 Compressor::Compressor(const std::string &arquivoEntrada, const std::string &arquivoComprimido, const std::string &arquivoDescomprimido, const std::string &convertedFile)
-    : arquivoEntrada(arquivoEntrada), arquivoComprimido(arquivoComprimido), arquivoDescomprimido(arquivoDescomprimido), convertedFilePath(convertedFile)
+    : arquivoEntrada(arquivoEntrada), arquivoComprimido(arquivoComprimido), arquivoDescomprimido(arquivoDescomprimido), arquivoBinario(convertedFile)
 {
     construirDicionarios();
 }
@@ -262,7 +262,7 @@ void Compressor::printBits(const std::vector<bool> &bits)
 }
 
 void Compressor::converterTextoParaBinario() {
-    writeCharAsBinaryToFile(convertedFilePath);
+    writeCharAsBinaryToFile(arquivoBinario);
 }
 
 void Compressor::writeCharAsBinaryToFile(const std::string &fileName) {

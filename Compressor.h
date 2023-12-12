@@ -23,7 +23,7 @@ private:
     std::string arquivoEntrada;
     std::string arquivoComprimido;
     std::string arquivoDescomprimido;
-    std::string convertedFilePath;
+    std::string arquivoBinario;
 
     std::unordered_map<std::string, std::string> bitsDictionary;
     std::unordered_map<std::string, std::string> debitsDictionary;
