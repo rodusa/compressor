@@ -17,7 +17,7 @@ public:
     void displayIntermediateResults();
 
     // New method to convert text to binary
-    void convertTextToBinary();
+    void converterTextoParaBinario();
 
 private:
     std::string inputFile;

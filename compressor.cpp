@@ -261,7 +261,7 @@ void Compressor::printBits(const std::vector<bool> &bits)
     }
 }
 
-void Compressor::convertTextToBinary() {
+void Compressor::converterTextoParaBinario() {
     writeCharAsBinaryToFile(convertedFilePath);
 }
 

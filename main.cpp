@@ -13,7 +13,7 @@ int main() {
 
     // Update the constructor call to include the new argument
     Compressor compressor(inputFilePath, compressedFilePath, decompressedFilePath, convertedFilePath);
-    compressor.convertTextToBinary(); // Call this method to perform the conversion "input.bin"
+    compressor.converterTextoParaBinario(); // Call this method to perform the conversion "input.bin"
     compressor.comprimir(); // compressed.txt
     compressor.descomprimir(); // decompressed.txt
     
