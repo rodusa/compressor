@@ -1,0 +1,7 @@
+1. Entra com texto;
+2. Converte pra binário;
+3. Comprime o binário;
+4. Descomprime;
+
+
+1. Entre com o texto no arquivo input.txt
