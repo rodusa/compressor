@@ -6,7 +6,7 @@
 
 class Compressor {
 public:
-    Compressor(const std::string &inputFile, const std::string &compressedFile, const std::string &decompressedFile, const std::string &convertedFile);
+    Compressor(const std::string &arquivoEntrada, const std::string &arquivoComprimido, const std::string &dearquivoComprimido, const std::string &convertedFile);
 
 
     void printBits(const std::vector<bool> &bits);
@@ -20,9 +20,9 @@ public:
     void converterTextoParaBinario();
 
 private:
-    std::string inputFile;
-    std::string compressedFile;
-    std::string decompressedFile;
+    std::string arquivoEntrada;
+    std::string arquivoComprimido;
+    std::string dearquivoComprimido;
     std::string convertedFilePath;
 
     std::unordered_map<std::string, std::string> bitsDictionary;
@@ -34,7 +34,7 @@ private:
     std::vector<std::string> compressData(const std::vector<bool> &data);
     std::vector<bool> descomprimirDados(const std::vector<std::string> &dadosComprimidos);
     void escreverComprimidoParaArquivo(const std::vector<std::string> &dadosComprimidos, const std::string &fileName);
-    std::vector<std::string> readCompressedFile(const std::string &fileName);
+    std::vector<std::string> readarquivoComprimido(const std::string &fileName);
 
     // New private method to write each character as binary to a file
     void writeCharAsBinaryToFile(const std::string &fileName);

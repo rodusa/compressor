@@ -4,25 +4,25 @@
 #include <iostream>
 #include <bitset>
 
-Compressor::Compressor(const std::string &inputFile, const std::string &compressedFile, const std::string &decompressedFile, const std::string &convertedFile)
-    : inputFile(inputFile), compressedFile(compressedFile), decompressedFile(decompressedFile), convertedFilePath(convertedFile)
+Compressor::Compressor(const std::string &arquivoEntrada, const std::string &arquivoComprimido, const std::string &dearquivoComprimido, const std::string &convertedFile)
+    : arquivoEntrada(arquivoEntrada), arquivoComprimido(arquivoComprimido), dearquivoComprimido(dearquivoComprimido), convertedFilePath(convertedFile)
 {
     construirDicionarios();
 }
 
 void Compressor::comprimir()
 {
-    auto dadosBinarios = lerArquivoParaBinario(inputFile);
+    auto dadosBinarios = lerArquivoParaBinario(arquivoEntrada);
     printBits(dadosBinarios);
     auto dadosComprimidos = compressData(dadosBinarios);
-    escreverComprimidoParaArquivo(dadosComprimidos, compressedFile);
+    escreverComprimidoParaArquivo(dadosComprimidos, arquivoComprimido);
 }
 
 void Compressor::descomprimir()
 {
-    auto dadosComprimidos = readCompressedFile(compressedFile);
+    auto dadosComprimidos = readarquivoComprimido(arquivoComprimido);
     auto dadosDescomprimidos = descomprimirDados(dadosComprimidos);
-    escreverBinarioEmArquivo(dadosDescomprimidos, decompressedFile);
+    escreverBinarioEmArquivo(dadosDescomprimidos, dearquivoComprimido);
 }
 
 // Dicionário 4 bits
@@ -216,7 +216,7 @@ void Compressor::escreverComprimidoParaArquivo(const std::vector<std::string> &d
     }
 }
 
-std::vector<std::string> Compressor::readCompressedFile(const std::string &fileName)
+std::vector<std::string> Compressor::readarquivoComprimido(const std::string &fileName)
 {
     std::vector<std::string> dadosComprimidos;
     std::ifstream file(fileName);
@@ -266,16 +266,16 @@ void Compressor::converterTextoParaBinario() {
 }
 
 void Compressor::writeCharAsBinaryToFile(const std::string &fileName) {
-    std::ifstream inputFile(this->inputFile);
+    std::ifstream arquivoEntrada(this->arquivoEntrada);
     std::ofstream outputFile(fileName, std::ios::binary);
 
-    if (!inputFile || !outputFile) {
+    if (!arquivoEntrada || !outputFile) {
         std::cerr << "Error opening files." << std::endl;
         return;
     }
 
     char character;
-    while (inputFile.get(character)) {
+    while (arquivoEntrada.get(character)) {
         std::bitset<8> binary(character);
         outputFile << binary;
     }
