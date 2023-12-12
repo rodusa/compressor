@@ -8,11 +8,11 @@ int main() {
     
     std::string arquivoEntradaPath = folder + "input.txt";
     std::string arquivoComprimidoPath = folder + "compressed.txt";    
-    std::string dearquivoComprimidoPath = folder + "decompressed.txt";
+    std::string arquivoDescomprimidoPath = folder + "decompressed.txt";
     std::string convertedFilePath = folder + "input.bin"; // Add this line
 
     // Update the constructor call to include the new argument
-    Compressor compressor(arquivoEntradaPath, arquivoComprimidoPath, dearquivoComprimidoPath, convertedFilePath);
+    Compressor compressor(arquivoEntradaPath, arquivoComprimidoPath, arquivoDescomprimidoPath, convertedFilePath);
     compressor.converterTextoParaBinario(); // Call this method to perform the conversion "input.bin"
     compressor.comprimir(); // compressed.txt
     compressor.descomprimir(); // decompressed.txt

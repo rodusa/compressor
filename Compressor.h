@@ -6,7 +6,7 @@
 
 class Compressor {
 public:
-    Compressor(const std::string &arquivoEntrada, const std::string &arquivoComprimido, const std::string &dearquivoComprimido, const std::string &convertedFile);
+    Compressor(const std::string &arquivoEntrada, const std::string &arquivoComprimido, const std::string &arquivoDescomprimido, const std::string &convertedFile);
 
 
     void printBits(const std::vector<bool> &bits);
@@ -22,7 +22,7 @@ public:
 private:
     std::string arquivoEntrada;
     std::string arquivoComprimido;
-    std::string dearquivoComprimido;
+    std::string arquivoDescomprimido;
     std::string convertedFilePath;
 
     std::unordered_map<std::string, std::string> bitsDictionary;

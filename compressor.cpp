@@ -4,8 +4,8 @@
 #include <iostream>
 #include <bitset>
 
-Compressor::Compressor(const std::string &arquivoEntrada, const std::string &arquivoComprimido, const std::string &dearquivoComprimido, const std::string &convertedFile)
-    : arquivoEntrada(arquivoEntrada), arquivoComprimido(arquivoComprimido), dearquivoComprimido(dearquivoComprimido), convertedFilePath(convertedFile)
+Compressor::Compressor(const std::string &arquivoEntrada, const std::string &arquivoComprimido, const std::string &arquivoDescomprimido, const std::string &convertedFile)
+    : arquivoEntrada(arquivoEntrada), arquivoComprimido(arquivoComprimido), arquivoDescomprimido(arquivoDescomprimido), convertedFilePath(convertedFile)
 {
     construirDicionarios();
 }
@@ -22,7 +22,7 @@ void Compressor::descomprimir()
 {
     auto dadosComprimidos = readarquivoComprimido(arquivoComprimido);
     auto dadosDescomprimidos = descomprimirDados(dadosComprimidos);
-    escreverBinarioEmArquivo(dadosDescomprimidos, dearquivoComprimido);
+    escreverBinarioEmArquivo(dadosDescomprimidos, arquivoDescomprimido);
 }
 
 // Dicionário 4 bits
