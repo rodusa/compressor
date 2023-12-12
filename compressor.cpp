@@ -21,7 +21,7 @@ void Compressor::comprimir()
 void Compressor::descomprimir()
 {
     auto compressedData = readCompressedFile(compressedFile);
-    auto decompressedData = decompressData(compressedData);
+    auto decompressedData = descomprimirDados(compressedData);
     writeBinaryToFile(decompressedData, decompressedFile);
 }
 
@@ -165,7 +165,7 @@ std::vector<std::string> Compressor::compressData(const std::vector<bool> &data)
     return compressedData;
 }
 
-std::vector<bool> Compressor::decompressData(const std::vector<std::string> &compressedData) {
+std::vector<bool> Compressor::descomprimirDados(const std::vector<std::string> &compressedData) {
     std::vector<bool> decompressedData;
     std::cout << "Decompressing data... " << std::endl;
 
