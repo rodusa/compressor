@@ -126,7 +126,7 @@ std::vector<std::string> Compressor::compressData(const std::vector<bool> &data)
     size_t index = 0;
 
     // Debug: Imprimir o tamanho dos dados de entrada
-    std::cout << "Input data size: " << data.size() << " bits." << std::endl;
+    std::cout << "Tamanho dos dados de entrada: " << data.size() << " bits." << std::endl;
 
     while (index < data.size())
     {
@@ -155,7 +155,7 @@ std::vector<std::string> Compressor::compressData(const std::vector<bool> &data)
     }
 
     // Debug: Imprimir o conteúdo de compressedData
-    std::cout << "Compressed Data:" << std::endl;
+    std::cout << "Dados Comprimidos:" << std::endl;
     for (const auto &code : compressedData)
     {
         std::cout << code << " ";
