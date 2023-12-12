@@ -5,3 +5,5 @@
 
 
 1. Entre com o texto no arquivo input.txt
+
+g++ -std=c++11 -o meu_programa main.cpp compressor.cpp

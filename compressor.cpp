@@ -25,7 +25,7 @@ void Compressor::descomprimir()
     escreverBinarioEmArquivo(dadosDescomprimidos, arquivoDescompactado);
 }
 
-// Dicionário 4 bits
+// Dicionário mapeado para 4 bits
 void Compressor::construirDicionarios()
 {
     bitsDictionary["0000"] = "A";
