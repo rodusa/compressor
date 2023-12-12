@@ -22,7 +22,7 @@ void Compressor::descomprimir()
 {
     auto dadosComprimidos = readCompressedFile(compressedFile);
     auto dadosDescomprimidos = descomprimirDados(dadosComprimidos);
-    writeBinaryToFile(dadosDescomprimidos, decompressedFile);
+    escreverBinarioEmArquivo(dadosDescomprimidos, decompressedFile);
 }
 
 // Dicionário 4 bits
@@ -91,7 +91,7 @@ std::vector<bool> Compressor::lerArquivoParaBinario(const std::string &fileName)
     return dadosBinarios;
 }
 
-void Compressor::writeBinaryToFile(const std::vector<bool> &dadosBinarios, const std::string &fileName) {
+void Compressor::escreverBinarioEmArquivo(const std::vector<bool> &dadosBinarios, const std::string &fileName) {
     std::ofstream file(fileName, std::ios::binary);
     if (!file) {
         std::cerr << "Error opening file for writing: " << fileName << std::endl;
