@@ -28,28 +28,28 @@ void Compressor::descomprimir()
 // Dicionário 4 bits
 void Compressor::buildDictionaries()
 {
-    compressionDictionary["0000"] = "A";
-    compressionDictionary["0001"] = "B";
-    compressionDictionary["0010"] = "C";
-    compressionDictionary["0011"] = "D";
-    compressionDictionary["0100"] = "E";
-    compressionDictionary["0101"] = "F";
-    compressionDictionary["0110"] = "G";
-    compressionDictionary["0111"] = "H";
-    compressionDictionary["1000"] = "I";
-    compressionDictionary["1001"] = "J";
-    compressionDictionary["1010"] = "K";
-    compressionDictionary["1011"] = "L";
-    compressionDictionary["1100"] = "M";
-    compressionDictionary["1101"] = "N";
-    compressionDictionary["1110"] = "O";
-    compressionDictionary["1111"] = "P";
+    bitsDictionary["0000"] = "A";
+    bitsDictionary["0001"] = "B";
+    bitsDictionary["0010"] = "C";
+    bitsDictionary["0011"] = "D";
+    bitsDictionary["0100"] = "E";
+    bitsDictionary["0101"] = "F";
+    bitsDictionary["0110"] = "G";
+    bitsDictionary["0111"] = "H";
+    bitsDictionary["1000"] = "I";
+    bitsDictionary["1001"] = "J";
+    bitsDictionary["1010"] = "K";
+    bitsDictionary["1011"] = "L";
+    bitsDictionary["1100"] = "M";
+    bitsDictionary["1101"] = "N";
+    bitsDictionary["1110"] = "O";
+    bitsDictionary["1111"] = "P";
 
 
     // Build the decompression dictionary
-    for (const auto &pair : compressionDictionary)
+    for (const auto &pair : bitsDictionary)
     {
-        decompressionDictionary[pair.second] = pair.first;
+        debitsDictionary[pair.second] = pair.first;
     }
 }
 
@@ -136,9 +136,9 @@ std::vector<std::string> Compressor::compressData(const std::vector<bool> &data)
         for (size_t i = index; i < data.size(); ++i)
         {
             bitSequence.push_back(data[i] ? '1' : '0');
-            if (compressionDictionary.find(bitSequence) != compressionDictionary.end())
+            if (bitsDictionary.find(bitSequence) != bitsDictionary.end())
             {
-                compressedData.push_back(compressionDictionary[bitSequence]);
+                compressedData.push_back(bitsDictionary[bitSequence]);
                 index = i + 1; // Update index to the position after the matched sequence
                 matchFound = true;
                 break;
@@ -171,8 +171,8 @@ std::vector<bool> Compressor::decompressData(const std::vector<std::string> &com
 
     for (const auto &code : compressedData) {
         std::cout << "Code: " << code << " ";
-        if (decompressionDictionary.find(code) != decompressionDictionary.end()) {
-            std::string sequence = decompressionDictionary[code];
+        if (debitsDictionary.find(code) != debitsDictionary.end()) {
+            std::string sequence = debitsDictionary[code];
             std::cout << "Sequence: " << sequence << " ";
             for (char bit : sequence) {
                 bool bitValue = (bit == '1');
@@ -232,7 +232,7 @@ std::vector<std::string> Compressor::readCompressedFile(const std::string &fileN
     {
         code.push_back(ch);
         // Check if this sequence of characters matches any code in the decompression dictionary
-        if (decompressionDictionary.find(code) != decompressionDictionary.end())
+        if (debitsDictionary.find(code) != debitsDictionary.end())
         {
             compressedData.push_back(code);
             code.clear(); // Reset the code string for the next sequence

@@ -25,8 +25,8 @@ private:
     std::string decompressedFile;
     std::string convertedFilePath;
 
-    std::unordered_map<std::string, std::string> compressionDictionary;
-    std::unordered_map<std::string, std::string> decompressionDictionary;
+    std::unordered_map<std::string, std::string> bitsDictionary;
+    std::unordered_map<std::string, std::string> debitsDictionary;
 
     void buildDictionaries();
     std::vector<bool> readFileToBinary(const std::string &fileName);
