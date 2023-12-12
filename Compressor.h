@@ -30,7 +30,7 @@ private:
 
     void construirDicionarios();
     std::vector<bool> lerArquivoParaBinario(const std::string &fileName);
-    void writeBinaryToFile(const std::vector<bool> &binaryData, const std::string &fileName);
+    void writeBinaryToFile(const std::vector<bool> &dadosBinarios, const std::string &fileName);
     std::vector<std::string> compressData(const std::vector<bool> &data);
     std::vector<bool> descomprimirDados(const std::vector<std::string> &compressedData);
     void writeCompressedToFile(const std::vector<std::string> &compressedData, const std::string &fileName);

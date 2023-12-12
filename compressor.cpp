@@ -12,9 +12,9 @@ Compressor::Compressor(const std::string &inputFile, const std::string &compress
 
 void Compressor::comprimir()
 {
-    auto binaryData = lerArquivoParaBinario(inputFile);
-    printBits(binaryData);
-    auto compressedData = compressData(binaryData);
+    auto dadosBinarios = lerArquivoParaBinario(inputFile);
+    printBits(dadosBinarios);
+    auto compressedData = compressData(dadosBinarios);
     writeCompressedToFile(compressedData, compressedFile);
 }
 
@@ -55,7 +55,7 @@ void Compressor::construirDicionarios()
 
 std::vector<bool> Compressor::lerArquivoParaBinario(const std::string &fileName)
 {
-    std::vector<bool> binaryData;
+    std::vector<bool> dadosBinarios;
     std::ifstream file(fileName, std::ios::binary);
     if (!file)
     {
@@ -74,7 +74,7 @@ std::vector<bool> Compressor::lerArquivoParaBinario(const std::string &fileName)
         {
             for (int j = 7; j >= 0; --j)
             {
-                binaryData.push_back((buffer[i] >> j) & 1);
+                dadosBinarios.push_back((buffer[i] >> j) & 1);
             }
         }
     }
@@ -84,14 +84,14 @@ std::vector<bool> Compressor::lerArquivoParaBinario(const std::string &fileName)
     {
         for (int j = 7; j >= 0; --j)
         {
-            binaryData.push_back((buffer[i] >> j) & 1);
+            dadosBinarios.push_back((buffer[i] >> j) & 1);
         }
     }
 
-    return binaryData;
+    return dadosBinarios;
 }
 
-void Compressor::writeBinaryToFile(const std::vector<bool> &binaryData, const std::string &fileName) {
+void Compressor::writeBinaryToFile(const std::vector<bool> &dadosBinarios, const std::string &fileName) {
     std::ofstream file(fileName, std::ios::binary);
     if (!file) {
         std::cerr << "Error opening file for writing: " << fileName << std::endl;
@@ -100,20 +100,20 @@ void Compressor::writeBinaryToFile(const std::vector<bool> &binaryData, const st
 
     // Write full bytes (8 bits)
     size_t i = 0;
-    for (; i + 7 < binaryData.size(); i += 8) {
+    for (; i + 7 < dadosBinarios.size(); i += 8) {
         char c = 0;
         for (int j = 0; j < 8; ++j) {
-            c |= binaryData[i + j] << (7 - j);
+            c |= dadosBinarios[i + j] << (7 - j);
         }
         file.put(c);
     }
 
     // Handle the remaining bits if they don't make up a full byte
-    if (i < binaryData.size()) {
+    if (i < dadosBinarios.size()) {
         char c = 0;
         int bitCount = 0;
-        for (; i < binaryData.size(); ++i, ++bitCount) {
-            c |= binaryData[i] << (7 - bitCount);
+        for (; i < dadosBinarios.size(); ++i, ++bitCount) {
+            c |= dadosBinarios[i] << (7 - bitCount);
         }
         file.put(c);
     }
