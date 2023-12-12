@@ -32,8 +32,8 @@ private:
     std::vector<bool> lerArquivoParaBinario(const std::string &fileName);
     void writeBinaryToFile(const std::vector<bool> &dadosBinarios, const std::string &fileName);
     std::vector<std::string> compressData(const std::vector<bool> &data);
-    std::vector<bool> descomprimirDados(const std::vector<std::string> &compressedData);
-    void escreverComprimidoParaArquivo(const std::vector<std::string> &compressedData, const std::string &fileName);
+    std::vector<bool> descomprimirDados(const std::vector<std::string> &dadosComprimidos);
+    void escreverComprimidoParaArquivo(const std::vector<std::string> &dadosComprimidos, const std::string &fileName);
     std::vector<std::string> readCompressedFile(const std::string &fileName);
 
     // New private method to write each character as binary to a file

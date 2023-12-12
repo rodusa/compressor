@@ -14,14 +14,14 @@ void Compressor::comprimir()
 {
     auto dadosBinarios = lerArquivoParaBinario(inputFile);
     printBits(dadosBinarios);
-    auto compressedData = compressData(dadosBinarios);
-    escreverComprimidoParaArquivo(compressedData, compressedFile);
+    auto dadosComprimidos = compressData(dadosBinarios);
+    escreverComprimidoParaArquivo(dadosComprimidos, compressedFile);
 }
 
 void Compressor::descomprimir()
 {
-    auto compressedData = readCompressedFile(compressedFile);
-    auto dadosDescomprimidos = descomprimirDados(compressedData);
+    auto dadosComprimidos = readCompressedFile(compressedFile);
+    auto dadosDescomprimidos = descomprimirDados(dadosComprimidos);
     writeBinaryToFile(dadosDescomprimidos, decompressedFile);
 }
 
@@ -122,7 +122,7 @@ void Compressor::writeBinaryToFile(const std::vector<bool> &dadosBinarios, const
 
 std::vector<std::string> Compressor::compressData(const std::vector<bool> &data)
 {
-    std::vector<std::string> compressedData;
+    std::vector<std::string> dadosComprimidos;
     size_t index = 0;
 
     // Debug: Imprimir o tamanho dos dados de entrada
@@ -138,7 +138,7 @@ std::vector<std::string> Compressor::compressData(const std::vector<bool> &data)
             bitSequence.push_back(data[i] ? '1' : '0');
             if (bitsDictionary.find(bitSequence) != bitsDictionary.end())
             {
-                compressedData.push_back(bitsDictionary[bitSequence]);
+                dadosComprimidos.push_back(bitsDictionary[bitSequence]);
                 index = i + 1; // Update index to the position after the matched sequence
                 matchFound = true;
                 break;
@@ -154,22 +154,22 @@ std::vector<std::string> Compressor::compressData(const std::vector<bool> &data)
         // std::cout << "Current index: " << index << ", Match found: " << matchFound << std::endl;
     }
 
-    // Debug: Imprimir o conteúdo de compressedData
+    // Debug: Imprimir o conteúdo de dadosComprimidos
     std::cout << "Dados Comprimidos:" << std::endl;
-    for (const auto &code : compressedData)
+    for (const auto &code : dadosComprimidos)
     {
         std::cout << code << " ";
     }
     std::cout << std::endl;
 
-    return compressedData;
+    return dadosComprimidos;
 }
 
-std::vector<bool> Compressor::descomprimirDados(const std::vector<std::string> &compressedData) {
+std::vector<bool> Compressor::descomprimirDados(const std::vector<std::string> &dadosComprimidos) {
     std::vector<bool> dadosDescomprimidos;
     std::cout << "Decompressing data... " << std::endl;
 
-    for (const auto &code : compressedData) {
+    for (const auto &code : dadosComprimidos) {
         std::cout << "Code: " << code << " ";
         if (debitsDictionary.find(code) != debitsDictionary.end()) {
             std::string sequence = debitsDictionary[code];
@@ -198,7 +198,7 @@ std::vector<bool> Compressor::descomprimirDados(const std::vector<std::string> &
 }
 
 
-void Compressor::escreverComprimidoParaArquivo(const std::vector<std::string> &compressedData, const std::string &fileName)
+void Compressor::escreverComprimidoParaArquivo(const std::vector<std::string> &dadosComprimidos, const std::string &fileName)
 {
     std::ofstream file(fileName);
     if (!file)
@@ -208,9 +208,9 @@ void Compressor::escreverComprimidoParaArquivo(const std::vector<std::string> &c
     }
 
     // Imprimir o nome do arquivo e o tamanho do vetor de dados comprimidos
-    std::cout << "Writing " << compressedData.size() << " compressed codes to file: " << fileName << std::endl;
+    std::cout << "Writing " << dadosComprimidos.size() << " compressed codes to file: " << fileName << std::endl;
 
-    for (const auto &code : compressedData)
+    for (const auto &code : dadosComprimidos)
     {
         file << code << "";
     }
@@ -218,7 +218,7 @@ void Compressor::escreverComprimidoParaArquivo(const std::vector<std::string> &c
 
 std::vector<std::string> Compressor::readCompressedFile(const std::string &fileName)
 {
-    std::vector<std::string> compressedData;
+    std::vector<std::string> dadosComprimidos;
     std::ifstream file(fileName);
     if (!file)
     {
@@ -234,12 +234,12 @@ std::vector<std::string> Compressor::readCompressedFile(const std::string &fileN
         // Check if this sequence of characters matches any code in the decompression dictionary
         if (debitsDictionary.find(code) != debitsDictionary.end())
         {
-            compressedData.push_back(code);
+            dadosComprimidos.push_back(code);
             code.clear(); // Reset the code string for the next sequence
         }
     }
 
-    return compressedData;
+    return dadosComprimidos;
 }
 
 
