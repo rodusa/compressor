@@ -153,21 +153,22 @@ std::vector<std::string> Compressor::compressData(const std::vector<bool> &data)
     }
 
     // Debug: Imprimir o conteúdo de dadosComprimidos
-    std::cout << "Dados Comprimidos:" << std::endl;
+    std::cout << "--------------- DADOS COMPRIMIDOS (input.compressed): ---------------------" << std::endl;
     for (const auto &code : dadosComprimidos)
     {
-        std::cout << code << " ";
+        std::cout << code << "";
     }
     std::cout << std::endl;
-
+    std::cout << "------------------------------- ||  ----------------------------------------" << std::endl;
     return dadosComprimidos;
 }
 
 std::vector<bool> Compressor::descomprimirDados(const std::vector<std::string> &dadosComprimidos)
 {
     std::vector<bool> dadosDescomprimidos;
-    std::cout << "Descompactando dados... " << std::endl;
-
+    std::cout << "--------------- USANDO DICIONÁRIO DE SÍMBOLOS PARA DESCOMPACTAR DADOS : ---------" << std::endl;    
+    //std::cout << "Descompactando dados... " << std::endl;
+ 
     for (const auto &code : dadosComprimidos)
     {
         std::cout << "Code: " << code << " ";
@@ -189,16 +190,18 @@ std::vector<bool> Compressor::descomprimirDados(const std::vector<std::string> &
         }
         std::cout << std::endl;
     }
+    std::cout << "----------------------- ||  ----------------------------" << std::endl;
 
     std::cout << "Descompactação completa. Tamanho da descompressão de dados: " << dadosDescomprimidos.size() << " bits." << std::endl;
 
     // Additional debugging: print the entire decompressed binary sequence
-    std::cout << "Descompressão dos dados Binários: ";
+    std::cout << "--------------- DESCOMPRESSÃO DOS DADOS BINÁRIOS : ---------" << std::endl;    
     for (bool bit : dadosDescomprimidos)
     {
         std::cout << bit << "";
     }
     std::cout << std::endl;
+    std::cout << "----------------------- ||  ----------------------------" << std::endl;
 
     return dadosDescomprimidos;
 }
@@ -265,6 +268,7 @@ void Compressor::imprimirVetor16Bits(const std::vector<bool> &bits)
     {
         std::cout << std::endl; // Certifica-se de terminar com uma quebra de linha se não for múltiplo de 16
     }
+    std::cout << "--------------------------- || ----------------------------------" << std::endl;
 }
 
 void Compressor::converterTextoParaBinario()
@@ -289,4 +293,19 @@ void Compressor::writeCharAsBinaryToFile(const std::string &nomeArquivo)
         std::bitset<8> binary(character);
         outputFile << binary;
     }
+}
+
+void Compressor::readDecompressed() {
+    std::cout << "--------------- CONTEÚDO DO ARQUIVO DESCOMPACTADO : ---------------------" << std::endl;    
+    std::ifstream decompressedFile(this->arquivoDescompactado);  // Use the member variable for the file path
+    if (!decompressedFile) {        
+        std::cerr << "Erro ao abrir o arquivo descompactado para leitura: " << this->arquivoDescompactado << std::endl;
+    } else {
+        std::cout << "\nConteúdo do Arquivo Descompactado (" << this->arquivoDescompactado << "):\n";
+        std::string line;
+        while (std::getline(decompressedFile, line)) {
+            std::cout << line << std::endl;
+        }
+    }
+    std::cout << "--------------------------- || ----------------------------------" << std::endl;
 }

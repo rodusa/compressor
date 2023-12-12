@@ -12,9 +12,8 @@ public:
     void comprimirBinario();
     void descomprimirBinario();
     void displayIntermediateResults();
-
-    // New method to convert text to binary
     void converterTextoParaBinario();
+    void readDecompressed();
 
 private:
     std::string arquivoTxtEntrada;

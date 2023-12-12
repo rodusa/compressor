@@ -30,6 +30,7 @@ int main() {
     compressor.converterTextoParaBinario(); // Call this method to perform the conversion "input.bin"
     compressor.comprimirBinario(); // compressed.txt
     compressor.descomprimirBinario(); // decompressed.txt
+    compressor.readDecompressed(); 
     
     return 0;
 }
