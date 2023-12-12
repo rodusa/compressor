@@ -26,13 +26,13 @@ private:
     std::unordered_map<std::string, std::string> debitsDictionary;
 
     void construirDicionarios();
-    std::vector<bool> lerArquivoParaBinario(const std::string &fileName);
-    void escreverBinarioEmArquivo(const std::vector<bool> &dadosBinarios, const std::string &fileName);
+    std::vector<bool> lerArquivoParaBinario(const std::string &nomeArquivo);
+    void escreverBinarioEmArquivo(const std::vector<bool> &dadosBinarios, const std::string &nomeArquivo);
     std::vector<std::string> compressData(const std::vector<bool> &data);
     std::vector<bool> descomprimirDados(const std::vector<std::string> &dadosComprimidos);
-    void escreverComprimidoParaArquivo(const std::vector<std::string> &dadosComprimidos, const std::string &fileName);
-    std::vector<std::string> readarquivoCompactado(const std::string &fileName);
+    void escreverComprimidoParaArquivo(const std::vector<std::string> &dadosComprimidos, const std::string &nomeArquivo);
+    std::vector<std::string> readarquivoCompactado(const std::string &nomeArquivo);
 
     // New private method to write each character as binary to a file
-    void writeCharAsBinaryToFile(const std::string &fileName);
+    void writeCharAsBinaryToFile(const std::string &nomeArquivo);
 };

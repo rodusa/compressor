@@ -52,16 +52,16 @@ void Compressor::construirDicionarios()
     }
 }
 
-std::vector<bool> Compressor::lerArquivoParaBinario(const std::string &fileName)
+std::vector<bool> Compressor::lerArquivoParaBinario(const std::string &nomeArquivo)
 {
     std::vector<bool> dadosBinarios;
-    std::ifstream file(fileName, std::ios::binary);
+    std::ifstream file(nomeArquivo, std::ios::binary);
     if (!file)
     {
-        std::cerr << "Erro ao abrir arquivo para leitura: " << fileName << std::endl;
+        std::cerr << "Erro ao abrir arquivo para leitura: " << nomeArquivo << std::endl;
         return {};
     }
-    std::cout << "Arquivo " << fileName << " foi lido com sucesso." << std::endl;
+    std::cout << "Arquivo " << nomeArquivo << " foi lido com sucesso." << std::endl;
 
     char buffer[2]; // Lê 2 bytes ou 16 bits por vez
     while (true)
@@ -84,12 +84,12 @@ std::vector<bool> Compressor::lerArquivoParaBinario(const std::string &fileName)
     return dadosBinarios;
 }
 
-void Compressor::escreverBinarioEmArquivo(const std::vector<bool> &dadosBinarios, const std::string &fileName)
+void Compressor::escreverBinarioEmArquivo(const std::vector<bool> &dadosBinarios, const std::string &nomeArquivo)
 {
-    std::ofstream file(fileName, std::ios::binary);
+    std::ofstream file(nomeArquivo, std::ios::binary);
     if (!file)
     {
-        std::cerr << "Erro ao abrir arquivo para escrita: " << fileName << std::endl;
+        std::cerr << "Erro ao abrir arquivo para escrita: " << nomeArquivo << std::endl;
         return;
     }
 
@@ -202,17 +202,17 @@ std::vector<bool> Compressor::descomprimirDados(const std::vector<std::string> &
     return dadosDescomprimidos;
 }
 
-void Compressor::escreverComprimidoParaArquivo(const std::vector<std::string> &dadosComprimidos, const std::string &fileName)
+void Compressor::escreverComprimidoParaArquivo(const std::vector<std::string> &dadosComprimidos, const std::string &nomeArquivo)
 {
-    std::ofstream file(fileName);
+    std::ofstream file(nomeArquivo);
     if (!file)
     {
-        std::cerr << "Erro ao abrir arquivo para escrita: " << fileName << std::endl;
+        std::cerr << "Erro ao abrir arquivo para escrita: " << nomeArquivo << std::endl;
         return;
     }
 
     // Imprimir o nome do arquivo e o tamanho do vetor de dados comprimidos
-    std::cout << "Escrevendo " << dadosComprimidos.size() << " símbolos em arquivo compactado: " << fileName << std::endl;
+    std::cout << "Escrevendo " << dadosComprimidos.size() << " símbolos em arquivo compactado: " << nomeArquivo << std::endl;
 
     for (const auto &code : dadosComprimidos)
     {
@@ -220,13 +220,13 @@ void Compressor::escreverComprimidoParaArquivo(const std::vector<std::string> &d
     }
 }
 
-std::vector<std::string> Compressor::readarquivoCompactado(const std::string &fileName)
+std::vector<std::string> Compressor::readarquivoCompactado(const std::string &nomeArquivo)
 {
     std::vector<std::string> dadosComprimidos;
-    std::ifstream file(fileName);
+    std::ifstream file(nomeArquivo);
     if (!file)
     {
-        std::cerr << "Erro ao abrir arquivo para leitura: " << fileName << std::endl;
+        std::cerr << "Erro ao abrir arquivo para leitura: " << nomeArquivo << std::endl;
         return {};
     }
 
@@ -269,10 +269,10 @@ void Compressor::converterTextoParaBinario()
     writeCharAsBinaryToFile(arquivoBinario);
 }
 
-void Compressor::writeCharAsBinaryToFile(const std::string &fileName)
+void Compressor::writeCharAsBinaryToFile(const std::string &nomeArquivo)
 {
     std::ifstream arquivoTxtEntrada(this->arquivoTxtEntrada);
-    std::ofstream outputFile(fileName, std::ios::binary);
+    std::ofstream outputFile(nomeArquivo, std::ios::binary);
 
     if (!arquivoTxtEntrada || !outputFile)
     {
