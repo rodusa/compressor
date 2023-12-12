@@ -10,7 +10,7 @@ Compressor::Compressor(const std::string &arquivoTxtEntrada, const std::string &
     construirDicionarios();
 }
 
-void Compressor::compactarBinario()
+void Compressor::comprimirBinario()
 {
     auto dadosBinarios = lerArquivoParaBinario(arquivoTxtEntrada);
     imprimirBits(dadosBinarios);
@@ -18,7 +18,7 @@ void Compressor::compactarBinario()
     escreverComprimidoParaArquivo(dadosComprimidos, arquivoCompactado);
 }
 
-void Compressor::descompactarBinario()
+void Compressor::descomprimirBinario()
 {
     auto dadosComprimidos = readarquivoCompactado(arquivoCompactado);
     auto dadosDescomprimidos = descomprimirDados(dadosComprimidos);
@@ -137,7 +137,7 @@ std::vector<std::string> Compressor::compressData(const std::vector<bool> &data)
             if (bitsDictionary.find(bitSequence) != bitsDictionary.end())
             {
                 dadosComprimidos.push_back(bitsDictionary[bitSequence]);
-                index = i + 1; // Update index to the position after the matched sequence
+                index = i + 1; // "Atualiza índice para posição após a sequência correspondente
                 matchFound = true;
                 break;
             }
@@ -145,7 +145,7 @@ std::vector<std::string> Compressor::compressData(const std::vector<bool> &data)
 
         if (!matchFound)
         {
-            index++; // Increment index if no match is found
+            index++; // Incrementa Índice caso nenhum caso nenhuma sequencia corresponden seja encontrada.
         }
 
         // Debug: Show progress

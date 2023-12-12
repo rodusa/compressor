@@ -9,8 +9,8 @@ public:
     Compressor(const std::string &arquivoTxtEntrada, const std::string &arquivoCompactado, const std::string &arquivoDescompactado, const std::string &convertedFile);
     void imprimirBits(const std::vector<bool> &bits);
 
-    void compactarBinario();
-    void descompactarBinario();
+    void comprimirBinario();
+    void descomprimirBinario();
     void displayIntermediateResults();
 
     // New method to convert text to binary
