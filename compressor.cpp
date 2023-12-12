@@ -21,8 +21,8 @@ void Compressor::comprimir()
 void Compressor::descomprimir()
 {
     auto compressedData = readCompressedFile(compressedFile);
-    auto decompressedData = descomprimirDados(compressedData);
-    writeBinaryToFile(decompressedData, decompressedFile);
+    auto dadosDescomprimidos = descomprimirDados(compressedData);
+    writeBinaryToFile(dadosDescomprimidos, decompressedFile);
 }
 
 // Dicionário 4 bits
@@ -166,7 +166,7 @@ std::vector<std::string> Compressor::compressData(const std::vector<bool> &data)
 }
 
 std::vector<bool> Compressor::descomprimirDados(const std::vector<std::string> &compressedData) {
-    std::vector<bool> decompressedData;
+    std::vector<bool> dadosDescomprimidos;
     std::cout << "Decompressing data... " << std::endl;
 
     for (const auto &code : compressedData) {
@@ -176,7 +176,7 @@ std::vector<bool> Compressor::descomprimirDados(const std::vector<std::string> &
             std::cout << "Sequence: " << sequence << " ";
             for (char bit : sequence) {
                 bool bitValue = (bit == '1');
-                decompressedData.push_back(bitValue);
+                dadosDescomprimidos.push_back(bitValue);
                 std::cout << bitValue; // Print each bit as it's added
             }
         } else {
@@ -185,16 +185,16 @@ std::vector<bool> Compressor::descomprimirDados(const std::vector<std::string> &
         std::cout << std::endl;
     }
 
-    std::cout << "Decompression complete. Size of decompressed data: " << decompressedData.size() << " bits." << std::endl;
+    std::cout << "Decompression complete. Size of decompressed data: " << dadosDescomprimidos.size() << " bits." << std::endl;
 
     // Additional debugging: print the entire decompressed binary sequence
     std::cout << "Decompressed Binary Data: ";
-    for (bool bit : decompressedData) {
+    for (bool bit : dadosDescomprimidos) {
         std::cout << bit << "";
     }
     std::cout << std::endl;
 
-    return decompressedData;
+    return dadosDescomprimidos;
 }
 
 
