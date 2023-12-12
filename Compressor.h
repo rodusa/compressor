@@ -7,7 +7,7 @@
 class Compressor {
 public:
     Compressor(const std::string &arquivoTxtEntrada, const std::string &arquivoCompactado, const std::string &arquivoDescompactado, const std::string &convertedFile);
-    void printBits(const std::vector<bool> &bits);
+    void imprimirBits(const std::vector<bool> &bits);
 
     void comprimir();
     void descomprimir();

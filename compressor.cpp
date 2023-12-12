@@ -13,7 +13,7 @@ Compressor::Compressor(const std::string &arquivoTxtEntrada, const std::string &
 void Compressor::comprimir()
 {
     auto dadosBinarios = lerArquivoParaBinario(arquivoTxtEntrada);
-    printBits(dadosBinarios);
+    imprimirBits(dadosBinarios);
     auto dadosComprimidos = compressData(dadosBinarios);
     escreverComprimidoParaArquivo(dadosComprimidos, arquivoCompactado);
 }
@@ -243,7 +243,7 @@ std::vector<std::string> Compressor::readarquivoCompactado(const std::string &fi
 }
 
 
-void Compressor::printBits(const std::vector<bool> &bits)
+void Compressor::imprimirBits(const std::vector<bool> &bits)
 {
     for (size_t i = 0; i < bits.size(); ++i)
     {
