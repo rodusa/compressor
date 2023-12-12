@@ -21,7 +21,7 @@ int main() {
     std::cout << "ARQUIVO BINÁRIO COMPACTADO: input.compressed " << std::endl;
     std::cout << "ARQUIVO DESCOMPACTADO: decompressed.txt" << std::endl;
     std::cout << "\n";
-    std::cout << "Antes de iniciar, modifique o arquivo de entrada input.txt. Depois que salvá-lo pressione ENTER para prosseguir." << std::endl;
+    std::cout << "Antes de iniciar, modifique o texto do input.txt. Depois que salvá-lo pressione ENTER para prosseguir." << std::endl;
     std::cin.get();
 
 
