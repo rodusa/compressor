@@ -29,7 +29,7 @@ private:
     std::unordered_map<std::string, std::string> debitsDictionary;
 
     void construirDicionarios();
-    std::vector<bool> readFileToBinary(const std::string &fileName);
+    std::vector<bool> lerArquivoParaBinario(const std::string &fileName);
     void writeBinaryToFile(const std::vector<bool> &binaryData, const std::string &fileName);
     std::vector<std::string> compressData(const std::vector<bool> &data);
     std::vector<bool> decompressData(const std::vector<std::string> &compressedData);

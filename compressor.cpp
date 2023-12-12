@@ -12,7 +12,7 @@ Compressor::Compressor(const std::string &inputFile, const std::string &compress
 
 void Compressor::comprimir()
 {
-    auto binaryData = readFileToBinary(inputFile);
+    auto binaryData = lerArquivoParaBinario(inputFile);
     printBits(binaryData);
     auto compressedData = compressData(binaryData);
     writeCompressedToFile(compressedData, compressedFile);
@@ -53,7 +53,7 @@ void Compressor::construirDicionarios()
     }
 }
 
-std::vector<bool> Compressor::readFileToBinary(const std::string &fileName)
+std::vector<bool> Compressor::lerArquivoParaBinario(const std::string &fileName)
 {
     std::vector<bool> binaryData;
     std::ifstream file(fileName, std::ios::binary);
