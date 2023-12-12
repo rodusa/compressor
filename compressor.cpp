@@ -94,7 +94,7 @@ std::vector<bool> Compressor::lerArquivoParaBinario(const std::string &fileName)
 void Compressor::escreverBinarioEmArquivo(const std::vector<bool> &dadosBinarios, const std::string &fileName) {
     std::ofstream file(fileName, std::ios::binary);
     if (!file) {
-        std::cerr << "Error opening file for writing: " << fileName << std::endl;
+        std::cerr << "Erro ao abrir arquivo para escrita: " << fileName << std::endl;
         return;
     }
 
@@ -167,28 +167,28 @@ std::vector<std::string> Compressor::compressData(const std::vector<bool> &data)
 
 std::vector<bool> Compressor::descomprimirDados(const std::vector<std::string> &dadosComprimidos) {
     std::vector<bool> dadosDescomprimidos;
-    std::cout << "Decompressing data... " << std::endl;
+    std::cout << "Descompactando dados... " << std::endl;
 
     for (const auto &code : dadosComprimidos) {
         std::cout << "Code: " << code << " ";
         if (debitsDictionary.find(code) != debitsDictionary.end()) {
             std::string sequence = debitsDictionary[code];
-            std::cout << "Sequence: " << sequence << " ";
+            std::cout << "Sequencia: " << sequence << " ";
             for (char bit : sequence) {
                 bool bitValue = (bit == '1');
                 dadosDescomprimidos.push_back(bitValue);
                 std::cout << bitValue; // Print each bit as it's added
             }
         } else {
-            std::cout << "Code not found in decompression dictionary";
+            std::cout << "Símbolo não encontrado no dicionário para descompressão";
         }
         std::cout << std::endl;
     }
 
-    std::cout << "Decompression complete. Size of decompressed data: " << dadosDescomprimidos.size() << " bits." << std::endl;
+    std::cout << "Descompactação complet. Tamanho da descompressão de dados: " << dadosDescomprimidos.size() << " bits." << std::endl;
 
     // Additional debugging: print the entire decompressed binary sequence
-    std::cout << "Decompressed Binary Data: ";
+    std::cout << "Descompressão dos dados Binários: ";
     for (bool bit : dadosDescomprimidos) {
         std::cout << bit << "";
     }
@@ -203,12 +203,12 @@ void Compressor::escreverComprimidoParaArquivo(const std::vector<std::string> &d
     std::ofstream file(fileName);
     if (!file)
     {
-        std::cerr << "Error opening file for writing: " << fileName << std::endl;
+        std::cerr << "Erro ao abrir arquivo para escrita: " << fileName << std::endl;
         return;
     }
 
     // Imprimir o nome do arquivo e o tamanho do vetor de dados comprimidos
-    std::cout << "Writing " << dadosComprimidos.size() << " compressed codes to file: " << fileName << std::endl;
+    std::cout << "Escrevendo " << dadosComprimidos.size() << " símbolos em arquivo compactado: " << fileName << std::endl;
 
     for (const auto &code : dadosComprimidos)
     {
@@ -222,7 +222,7 @@ std::vector<std::string> Compressor::readarquivoCompactado(const std::string &fi
     std::ifstream file(fileName);
     if (!file)
     {
-        std::cerr << "Error opening file for reading: " << fileName << std::endl;
+        std::cerr << "Erro ao abrir arquivo para leitura: " << fileName << std::endl;
         return {};
     }
 
@@ -270,7 +270,7 @@ void Compressor::writeCharAsBinaryToFile(const std::string &fileName) {
     std::ofstream outputFile(fileName, std::ios::binary);
 
     if (!arquivoTxtEntrada || !outputFile) {
-        std::cerr << "Error opening files." << std::endl;
+        std::cerr << "Erro abrindo arquivos." << std::endl;
         return;
     }
 
