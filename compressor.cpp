@@ -10,7 +10,7 @@ Compressor::Compressor(const std::string &arquivoTxtEntrada, const std::string &
     construirDicionarios();
 }
 
-void Compressor::comprimir()
+void Compressor::compactarBinario()
 {
     auto dadosBinarios = lerArquivoParaBinario(arquivoTxtEntrada);
     imprimirBits(dadosBinarios);
@@ -18,7 +18,7 @@ void Compressor::comprimir()
     escreverComprimidoParaArquivo(dadosComprimidos, arquivoCompactado);
 }
 
-void Compressor::descomprimir()
+void Compressor::descompactarBinario()
 {
     auto dadosComprimidos = readarquivoCompactado(arquivoCompactado);
     auto dadosDescomprimidos = descomprimirDados(dadosComprimidos);

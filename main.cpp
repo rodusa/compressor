@@ -14,8 +14,8 @@ int main() {
     // Update the constructor call to include the new argument
     Compressor compressor(arquivoTxtEntradaPath, arquivoCompactadoPath, arquivoDescompactadoPath, arquivoBinario);
     compressor.converterTextoParaBinario(); // Call this method to perform the conversion "input.bin"
-    compressor.comprimir(); // compressed.txt
-    compressor.descomprimir(); // decompressed.txt
+    compressor.compactarBinario(); // compressed.txt
+    compressor.descompactarBinario(); // decompressed.txt
     
     return 0;
 }
