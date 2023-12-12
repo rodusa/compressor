@@ -7,7 +7,7 @@
 Compressor::Compressor(const std::string &inputFile, const std::string &compressedFile, const std::string &decompressedFile, const std::string &convertedFile)
     : inputFile(inputFile), compressedFile(compressedFile), decompressedFile(decompressedFile), convertedFilePath(convertedFile)
 {
-    buildDictionaries();
+    construirDicionarios();
 }
 
 void Compressor::comprimir()
@@ -26,7 +26,7 @@ void Compressor::descomprimir()
 }
 
 // Dicionário 4 bits
-void Compressor::buildDictionaries()
+void Compressor::construirDicionarios()
 {
     bitsDictionary["0000"] = "A";
     bitsDictionary["0001"] = "B";

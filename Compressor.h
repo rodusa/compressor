@@ -28,7 +28,7 @@ private:
     std::unordered_map<std::string, std::string> bitsDictionary;
     std::unordered_map<std::string, std::string> debitsDictionary;
 
-    void buildDictionaries();
+    void construirDicionarios();
     std::vector<bool> readFileToBinary(const std::string &fileName);
     void writeBinaryToFile(const std::vector<bool> &binaryData, const std::string &fileName);
     std::vector<std::string> compressData(const std::vector<bool> &data);
