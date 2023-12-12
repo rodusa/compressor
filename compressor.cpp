@@ -15,7 +15,7 @@ void Compressor::comprimir()
     auto dadosBinarios = lerArquivoParaBinario(inputFile);
     printBits(dadosBinarios);
     auto compressedData = compressData(dadosBinarios);
-    writeCompressedToFile(compressedData, compressedFile);
+    escreverComprimidoParaArquivo(compressedData, compressedFile);
 }
 
 void Compressor::descomprimir()
@@ -59,12 +59,12 @@ std::vector<bool> Compressor::lerArquivoParaBinario(const std::string &fileName)
     std::ifstream file(fileName, std::ios::binary);
     if (!file)
     {
-        std::cerr << "Error opening file for reading: " << fileName << std::endl;
+        std::cerr << "Erro ao abrir arquivo para leitura: " << fileName << std::endl;
         return {};
     }
     else
     {
-        std::cout << "File " << fileName << " was read successfully." << std::endl;
+        std::cout << "Arquivo " << fileName << " foi lido com sucesso." << std::endl;
     }
 
     char buffer[2];
@@ -198,7 +198,7 @@ std::vector<bool> Compressor::descomprimirDados(const std::vector<std::string> &
 }
 
 
-void Compressor::writeCompressedToFile(const std::vector<std::string> &compressedData, const std::string &fileName)
+void Compressor::escreverComprimidoParaArquivo(const std::vector<std::string> &compressedData, const std::string &fileName)
 {
     std::ofstream file(fileName);
     if (!file)
