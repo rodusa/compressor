@@ -29,7 +29,7 @@ void Compressor::comprimirBinario()
     
     imprimirVetor16Bits(dadosBinarios);
     auto dadosComprimidos = compressData(dadosBinarios);
-    escreverComprimidoParaArquivo(dadosComprimidos, arquivoCompactado);
+    escreverEncriptadoParaBinario(dadosComprimidos, arquivoCompactado);
 }
 
 void Compressor::descomprimirBinario()
@@ -162,8 +162,6 @@ std::vector<std::string> Compressor::compressData(const std::vector<bool> &data)
             index++; // Incrementa Índice caso nenhum caso nenhuma sequencia corresponden seja encontrada.
         }
 
-        // Debug: Show progress
-        // std::cout << "Current index: " << index << ", Match found: " << matchFound << std::endl;
     }
 
     // Debug: Imprimir o conteúdo de dadosComprimidos
@@ -195,7 +193,6 @@ std::vector<bool> Compressor::descomprimirDados(const std::vector<std::string> &
             {
                 bool bitValue = (bit == '1');
                 dadosDescomprimidos.push_back(bitValue);
-                //std::cout << bitValue; // Print each bit as it's added
             }
         }
         else
@@ -204,9 +201,9 @@ std::vector<bool> Compressor::descomprimirDados(const std::vector<std::string> &
         }
         std::cout << std::endl;
     }
+    std::cout << "Descompactação completa. Tamanho da descompressão de dados: " << dadosDescomprimidos.size() << " bits." << std::endl;
     std::cout << "----------------------- ||  ----------------------------" << std::endl;
 
-    std::cout << "Descompactação completa. Tamanho da descompressão de dados: " << dadosDescomprimidos.size() << " bits." << std::endl;
 
     // Additional debugging: print the entire decompressed binary sequence
     std::cout << "--------------- DESCOMPRESSÃO DOS DADOS BINÁRIOS : ---------" << std::endl;    
@@ -220,7 +217,7 @@ std::vector<bool> Compressor::descomprimirDados(const std::vector<std::string> &
     return dadosDescomprimidos;
 }
 
-void Compressor::escreverComprimidoParaArquivo(const std::vector<std::string> &dadosComprimidos, const std::string &nomeArquivo)
+void Compressor::escreverEncriptadoParaBinario(const std::vector<std::string> &dadosComprimidos, const std::string &nomeArquivo)
 {
     std::ofstream file(nomeArquivo);
     if (!file)

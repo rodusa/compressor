@@ -4,8 +4,8 @@
 #include <iostream>
 
 int main() {
+    // Este caminho deverá ser mudado para o caminho
     std::string folder = "/Users/rlueneberg/Documents/data/2023/gabi-c++/project/";
-    //std::string folder = "./";
     
     std::string arquivoTxtPath = folder + "input.txt"; // Arquivo com texto
     std::string arquivoBinario = folder + "input.bin"; // Arquivo texto convertido para binário    
@@ -30,7 +30,7 @@ int main() {
     std::cout << "Pressione ENTER para prosseguir." << std::endl;
     std::cin.get();
 
-    // Update the constructor call to include the new argument
+    // Atualize a chamada do construtor para incluir o novo argumento.
     Compressor compressor(arquivoTxtPath, arquivoCompactadoPath, arquivoDescompactadoPath, arquivoBinario, arquivoEncriptadoPath, arquivoDesencriptadoPath);
     compressor.solicitarDadosDoUsuario(); // Usuário entra com texto e salva no arquivo input.txt
     compressor.encriptarArquivoTexto(); // Encripta arquivo texto (input.encrypted)
@@ -38,7 +38,7 @@ int main() {
     compressor.comprimirBinario(); // Comprime arquivo encriptado para binário (compressed.txt)
     compressor.descomprimirBinario(); // Descomprime arquivo binário encriptado (decompressed.txt)
     compressor.lerDescomprimido(); 
-    compressor.desencriptarComprimido(); // New method call
+    compressor.desencriptarComprimido();
     
     return 0;
 }
