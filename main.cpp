@@ -37,7 +37,6 @@ int main() {
     compressor.converterTextoParaBinario(); // Converte arquivo encriptado para binário (input.bin)
     compressor.comprimirBinario(); // Comprime arquivo encriptado para binário (compressed.txt)
     compressor.descomprimirBinario(); // Descomprime arquivo binário encriptado (decompressed.txt)
-    //compressor.lerDescomprimido(); 
     compressor.desencriptarComprimido();
     
     return 0;
