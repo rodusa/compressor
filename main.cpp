@@ -4,6 +4,7 @@
 #include <iostream>
 
 int main() {
+    std::string path;
     std::cout << "\n";
     std::cout << "###### PROGRAMA PARA COMPACTAR E CRIPTOGRAFAR CARACTERES (TEXTO) ######\n";
     std::cout << "Este programa utiliza os sequintes arquivos para compressao e criptografia: " << std::endl;    
@@ -28,7 +29,14 @@ int main() {
     std::getline(std::cin, folder);
 
     // Substituir todas as barras simples (\) por barras duplas (\\)
-    std::replace(folder.begin(), folder.end(), '\\', '/');
+    //std::replace(folder.begin(), folder.end(), '\\', '/');
+    // Substituir todas as barras simples '\' por barras duplas '\\'
+    size_t pos = 0;
+    while ((pos = path.find("\\", pos)) != std::string::npos) {
+         path.replace(pos, 1, "\\\\");
+         pos += 2; // Avançar a posição passando a barra dupla
+    }
+
     
     std::string arquivoTxtPath = folder + "input.txt"; // Arquivo com texto
     std::string arquivoBinario = folder + "input.bin"; // Arquivo texto convertido para binário    
