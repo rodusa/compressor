@@ -30,10 +30,9 @@ int main() {
     std::cout << "Pressione ENTER para prosseguir." << std::endl;
     std::cin.get();
 
-
     // Update the constructor call to include the new argument
     Compressor compressor(arquivoTxtPath, arquivoCompactadoPath, arquivoDescompactadoPath, arquivoBinario, arquivoEncriptadoPath, arquivoDesencriptadoPath);
-    compressor.writeUserInputToFile(); // Usuário entra com texto
+    compressor.solicitarDadosDoUsuario(); // Usuário entra com texto e salva no arquivo input.txt
     compressor.encriptarArquivoTexto(); // Encripta arquivo texto (input.encrypted)
     compressor.converterTextoParaBinario(); // Converte arquivo encriptado para binário (input.bin)
     compressor.comprimirBinario(); // Comprime arquivo encriptado para binário (compressed.txt)

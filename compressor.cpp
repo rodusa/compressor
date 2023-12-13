@@ -367,7 +367,7 @@ void Compressor::desencriptarComprimido() {
 }
 
 
-void Compressor::writeUserInputToFile() {
+void Compressor::solicitarDadosDoUsuario() {
     std::ofstream file(this->arquivoTxt);
     if (!file.is_open()) {
         std::cerr << "Erro ao abrir arquivo para escrita: " << this->arquivoTxt << std::endl;

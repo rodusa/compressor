@@ -16,7 +16,7 @@ Compressor(const std::string &arquivoTxt,
 
     void imprimirVetor16Bits(const std::vector<bool> &bits);
 
-    void writeUserInputToFile();
+    void solicitarDadosDoUsuario();
     void converterTextoParaBinario();
     void comprimirBinario();
     void descomprimirBinario();
