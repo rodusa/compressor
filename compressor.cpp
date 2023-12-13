@@ -165,20 +165,23 @@ std::vector<std::string> Compressor::comprimirDados(const std::vector<bool> &dat
     }
 
     // Debug: Imprimir o conteúdo de dadosComprimidos
+    std::cout << "\033[32m"; // Set text color to green 
     std::cout << "--------------- DADOS COMPRIMIDOS (input.compressed): ---------------------" << std::endl;
+    std::cout << "\033[0m"; // Reset text color to default
     for (const auto &code : dadosComprimidos)
     {
         std::cout << code << "";
     }
     std::cout << std::endl;
-    std::cout << "------------------------------- ||  ----------------------------------------" << std::endl;
     return dadosComprimidos;
 }
 
 std::vector<bool> Compressor::descomprimirDados(const std::vector<std::string> &dadosComprimidos)
 {
     std::vector<bool> dadosDescomprimidos;
+    std::cout << "\033[32m"; // Set text color to green
     std::cout << "--------------- USANDO DICIONÁRIO DE SÍMBOLOS PARA DESCOMPACTAR DADOS : ---------" << std::endl;    
+    std::cout << "\033[0m"; // Reset text color to default
     //std::cout << "Descompactando dados... " << std::endl;
  
     for (const auto &code : dadosComprimidos)
@@ -202,17 +205,18 @@ std::vector<bool> Compressor::descomprimirDados(const std::vector<std::string> &
         std::cout << std::endl;
     }
     std::cout << "Descompactação completa. Tamanho da descompressão de dados: " << dadosDescomprimidos.size() << " bits." << std::endl;
-    std::cout << "----------------------- ||  ----------------------------" << std::endl;
 
 
     // Additional debugging: print the entire decompressed binary sequence
+    std::cout << "\033[32m"; // Set text color to green
     std::cout << "--------------- DESCOMPRESSÃO DOS DADOS BINÁRIOS : ---------" << std::endl;    
+    std::cout << "\033[0m"; // Reset text color to default
     for (bool bit : dadosDescomprimidos)
     {
         std::cout << bit << "";
     }
     std::cout << std::endl;
-    std::cout << "----------------------- ||  ----------------------------" << std::endl;
+
 
     return dadosDescomprimidos;
 }
@@ -262,9 +266,11 @@ std::vector<std::string> Compressor::readarquivoCompactado(const std::string &no
 }
 
 void Compressor::imprimirVetor16Bits(const std::vector<bool> &bits)
-{
+{    
     std::cout << "\n";
+    std::cout << "\033[32m"; // Set text color to green 
     std::cout << "--------------- LEITURA DO VETOR (16 BITS): ---------------------" << std::endl;
+    std::cout << "\033[0m"; // Reset text color to default
     for (size_t i = 0; i < bits.size(); ++i)
     {
         std::cout << bits[i]; // Imprime o bit atual
@@ -279,7 +285,8 @@ void Compressor::imprimirVetor16Bits(const std::vector<bool> &bits)
     {
         std::cout << std::endl; // Certifica-se de terminar com uma quebra de linha se não for múltiplo de 16
     }
-    std::cout << "--------------------------- || ----------------------------------" << std::endl;
+    
+
 }
 
 void Compressor::converterTextoParaBinario()
@@ -316,7 +323,7 @@ void Compressor::lerDescomprimido() {
             std::cout << line << std::endl;
         }
     }
-    std::cout << "--------------------------- || ----------------------------------" << std::endl;
+
 }
 
 void Compressor::encriptarArquivoTexto() {
@@ -340,6 +347,7 @@ void Compressor::encriptarArquivoTexto() {
 }
 
 void Compressor::desencriptarComprimido() {
+    std::cout << "\033[32m"; // Set text color to green    
     std::cout << "--------------- ARQUIVO DESCRIPTOGRAFADO : ---------------------" << std::endl;    
     char key = 'X'; // Mesma Chave simples de encriptação usando o XOR
     std::ifstream inputFile(this->arquivoDescompactado, std::ios::binary);
@@ -359,8 +367,8 @@ void Compressor::desencriptarComprimido() {
 
     inputFile.close();
     outputFile.close();
-    
-    std::cout << "--------------------------- || ----------------------------------" << std::endl;
+    std::cout << "\033[0m"; // Set text color to black    
+    std::cout << "\n";
 }
 
 
