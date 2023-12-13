@@ -1,5 +1,5 @@
 // main.cpp
-#include "Compressor.h"
+#include "compressor.h"
 #include <string>
 #include <iostream>
 

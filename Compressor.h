@@ -38,7 +38,7 @@ private:
     void construirDicionarios();
     std::vector<bool> lerArquivoParaBinario(const std::string &nomeArquivo);
     void escreverBinarioEmArquivo(const std::vector<bool> &dadosBinarios, const std::string &nomeArquivo);
-    std::vector<std::string> compressData(const std::vector<bool> &data);
+    std::vector<std::string> comprimirDados(const std::vector<bool> &data);
     std::vector<bool> descomprimirDados(const std::vector<std::string> &dadosComprimidos);
     void escreverEncriptadoParaBinario(const std::vector<std::string> &dadosComprimidos, const std::string &nomeArquivo);
     std::vector<std::string> readarquivoCompactado(const std::string &nomeArquivo);

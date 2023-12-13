@@ -1,5 +1,5 @@
 // Compressor.cpp
-#include "Compressor.h"
+#include "compressor.h"
 #include <fstream>
 #include <iostream>
 #include <bitset>
@@ -28,7 +28,7 @@ void Compressor::comprimirBinario()
     auto dadosBinarios = lerArquivoParaBinario(arquivoEncriptado);
     
     imprimirVetor16Bits(dadosBinarios);
-    auto dadosComprimidos = compressData(dadosBinarios);
+    auto dadosComprimidos = comprimirDados(dadosBinarios);
     escreverEncriptadoParaBinario(dadosComprimidos, arquivoCompactado);
 }
 
@@ -132,7 +132,7 @@ void Compressor::escreverBinarioEmArquivo(const std::vector<bool> &dadosBinarios
     }
 }
 
-std::vector<std::string> Compressor::compressData(const std::vector<bool> &data)
+std::vector<std::string> Compressor::comprimirDados(const std::vector<bool> &data)
 {
     std::vector<std::string> dadosComprimidos;
     size_t index = 0;
