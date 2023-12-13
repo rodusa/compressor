@@ -4,11 +4,20 @@
 #include <iostream>
 #include <bitset>
 
-Compressor::Compressor(const std::string &arquivoTxtEntrada, const std::string &arquivoCompactado, const std::string &arquivoDescompactado, const std::string &convertedFile)
-    : arquivoTxtEntrada(arquivoTxtEntrada), arquivoCompactado(arquivoCompactado), arquivoDescompactado(arquivoDescompactado), arquivoBinario(convertedFile)
+Compressor::Compressor(const std::string &arquivoTxtEntrada, 
+                       const std::string &arquivoCompactado, 
+                       const std::string &arquivoDescompactado, 
+                       const std::string &convertedFile,
+                       const std::string &arquivoEncriptado) // Add this parameter
+    : arquivoTxtEntrada(arquivoTxtEntrada), 
+      arquivoCompactado(arquivoCompactado), 
+      arquivoDescompactado(arquivoDescompactado), 
+      arquivoBinario(convertedFile),
+      arquivoEncriptado(arquivoEncriptado) // Initialize the member variable
 {
     construirDicionarios();
 }
+
 
 void Compressor::comprimirBinario()
 {
@@ -308,4 +317,25 @@ void Compressor::lerDescomprimido() {
         }
     }
     std::cout << "--------------------------- || ----------------------------------" << std::endl;
+}
+
+
+void Compressor::encriptarArquivoTexto() {
+    char key = 'X'; // Simple XOR encryption key
+    std::ifstream inputFile(this->arquivoTxtEntrada, std::ios::binary);
+    std::ofstream outputFile(this->arquivoEncriptado, std::ios::binary);
+
+    if (!inputFile.is_open() || !outputFile.is_open()) {
+        std::cerr << "Error opening files for encryption." << std::endl;
+        return;
+    }
+
+    char ch;
+    while (inputFile.get(ch)) {
+        char encryptedChar = ch ^ key; // XOR encryption
+        outputFile.put(encryptedChar);
+    }
+
+    inputFile.close();
+    outputFile.close();
 }

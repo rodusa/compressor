@@ -6,19 +6,27 @@
 
 class Compressor {
 public:
-    Compressor(const std::string &arquivoTxtEntrada, const std::string &arquivoCompactado, const std::string &arquivoDescompactado, const std::string &convertedFile);
+Compressor(const std::string &arquivoTxtEntrada, 
+               const std::string &arquivoCompactado, 
+               const std::string &arquivoDescompactado, 
+               const std::string &convertedFile,
+               const std::string &arquivoEncriptado);
+
     void imprimirVetor16Bits(const std::vector<bool> &bits);
 
     void converterTextoParaBinario();
     void comprimirBinario();
     void descomprimirBinario();
     void lerDescomprimido();
+    void encriptarArquivoTexto();
 
 private:
     std::string arquivoTxtEntrada;
     std::string arquivoCompactado;
     std::string arquivoDescompactado;
     std::string arquivoBinario;
+    std::string arquivoEncriptado;
+
 
     std::unordered_map<std::string, std::string> bitsDictionary;
     std::unordered_map<std::string, std::string> debitsDictionary;

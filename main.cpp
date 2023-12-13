@@ -11,6 +11,7 @@ int main() {
     std::string arquivoBinario = folder + "input.bin"; // Arquivo texto convertido para binário    
     std::string arquivoCompactadoPath = folder + "input.compressed"; // Arquivo binário compactado    
     std::string arquivoDescompactadoPath = folder + "input.decompressed"; // Arquivo binário compactado convertido para texto
+    std::string arquivoEncriptadoPath = folder + "input.encrypted"; // Path for the encrypted file
     
     std::cout << "\n";
     std::cout << "###### PROGRAMA PARA COMPACTAR E CRIPTOGRAFAR CARACTERES (TEXTO) ######\n";
@@ -28,7 +29,8 @@ int main() {
 
 
     // Update the constructor call to include the new argument
-    Compressor compressor(arquivoTxtEntradaPath, arquivoCompactadoPath, arquivoDescompactadoPath, arquivoBinario);
+    Compressor compressor(arquivoTxtEntradaPath, arquivoCompactadoPath, arquivoDescompactadoPath, arquivoBinario, arquivoEncriptadoPath);
+    compressor.encriptarArquivoTexto();
     compressor.converterTextoParaBinario(); // Call this method to perform the conversion "input.bin"
     compressor.comprimirBinario(); // compressed.txt
     compressor.descomprimirBinario(); // decompressed.txt
