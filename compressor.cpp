@@ -295,7 +295,7 @@ void Compressor::writeCharAsBinaryToFile(const std::string &nomeArquivo)
     }
 }
 
-void Compressor::readDecompressed() {
+void Compressor::lerDescomprimido() {
     std::cout << "--------------- CONTEÚDO DO ARQUIVO DESCOMPACTADO : ---------------------" << std::endl;    
     std::ifstream decompressedFile(this->arquivoDescompactado);  // Use the member variable for the file path
     if (!decompressedFile) {        

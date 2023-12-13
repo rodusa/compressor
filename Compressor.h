@@ -9,11 +9,10 @@ public:
     Compressor(const std::string &arquivoTxtEntrada, const std::string &arquivoCompactado, const std::string &arquivoDescompactado, const std::string &convertedFile);
     void imprimirVetor16Bits(const std::vector<bool> &bits);
 
+    void converterTextoParaBinario();
     void comprimirBinario();
     void descomprimirBinario();
-    void displayIntermediateResults();
-    void converterTextoParaBinario();
-    void readDecompressed();
+    void lerDescomprimido();
 
 private:
     std::string arquivoTxtEntrada;

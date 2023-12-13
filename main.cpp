@@ -21,7 +21,9 @@ int main() {
     std::cout << "ARQUIVO BINÁRIO COMPACTADO: input.compressed " << std::endl;
     std::cout << "ARQUIVO DESCOMPACTADO: decompressed.txt" << std::endl;
     std::cout << "\n";
-    std::cout << "Antes de iniciar, modifique o texto do input.txt. Depois que salvá-lo pressione ENTER para prosseguir." << std::endl;
+    std::cout << "Antes de iniciar, modifique o texto do input.txt. Certifique que o arquivo esteja mesmo caminho do executável." << std::endl;
+    std::cout << "Caso não exista, será necessário criar. Depois, modifique o texto do input.txt, salvando-o." << std::endl;
+    std::cout << "Após Modificar o arquivo input.txt, salvando-o. Pressione ENTER para prosseguir." << std::endl;
     std::cin.get();
 
 
@@ -30,7 +32,7 @@ int main() {
     compressor.converterTextoParaBinario(); // Call this method to perform the conversion "input.bin"
     compressor.comprimirBinario(); // compressed.txt
     compressor.descomprimirBinario(); // decompressed.txt
-    compressor.readDecompressed(); 
+    compressor.lerDescomprimido(); 
     
     return 0;
 }
