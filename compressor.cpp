@@ -365,3 +365,19 @@ void Compressor::desencriptarComprimido() {
     
     std::cout << "--------------------------- || ----------------------------------" << std::endl;
 }
+
+
+void Compressor::writeUserInputToFile() {
+    std::ofstream file(this->arquivoTxt);
+    if (!file.is_open()) {
+        std::cerr << "Erro ao abrir arquivo para escrita: " << this->arquivoTxt << std::endl;
+        return;
+    }
+
+    std::cout << "Digite o texto a ser salvo em input.txt (pressione ENTER para concluir): \n";
+    std::string line;
+    std::getline(std::cin, line);
+    file << line;
+
+    file.close();
+}

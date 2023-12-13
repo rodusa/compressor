@@ -20,19 +20,20 @@ int main() {
     std::cout << "Este programa utiliza os sequintes arquivos para compressão e criptografia: " << std::endl;    
     std::cout << "\n";
     std::cout << "ARQUIVO TEXTO: input.txt" << std::endl;
-    std::cout << "ARQUIVO ENCRIPTDADO: input.encrypted" << std::endl;
-    std::cout << "ARQUIVO COMPACTADO: input.bin" << std::endl;
+    std::cout << "ARQUIVO ENCRIPTADO: input.encrypted" << std::endl;
+    std::cout << "ARQUIVO ENCRIPTADO P/ BINÁRIO: input.bin" << std::endl;
     std::cout << "ARQUIVO BINÁRIO COMPACTADO: input.compressed " << std::endl;
     std::cout << "ARQUIVO DESCOMPACTADO: decompressed.txt" << std::endl;
+    std::cout << "ARQUIVO DESCRIPTOGRAFADO: outupt.decrypted" << std::endl;
     std::cout << "\n";
-    std::cout << "Antes de iniciar, modifique o texto do arquivo input.txt. Certifique-se que este arquivo esteja mesmo caminho do executável." << std::endl;
-    std::cout << "Caso não exista, será necessário criá-lo." << std::endl;
-    std::cout << "Após Modificar o arquivo input.txt e salvá-lo, pressione ENTER para prosseguir." << std::endl;
+    std::cout << "Certifique-se que o arquivo input.txt existe e está no mesmo local do executável" << std::endl;
+    std::cout << "Pressione ENTER para prosseguir." << std::endl;
     std::cin.get();
 
 
     // Update the constructor call to include the new argument
     Compressor compressor(arquivoTxtPath, arquivoCompactadoPath, arquivoDescompactadoPath, arquivoBinario, arquivoEncriptadoPath, arquivoDesencriptadoPath);
+    compressor.writeUserInputToFile(); // Usuário entra com texto
     compressor.encriptarArquivoTexto(); // Encripta arquivo texto (input.encrypted)
     compressor.converterTextoParaBinario(); // Converte arquivo encriptado para binário (input.bin)
     compressor.comprimirBinario(); // Comprime arquivo encriptado para binário (compressed.txt)
