@@ -343,9 +343,9 @@ void Compressor::encriptarArquivoTexto() {
 }
 
 void Compressor::desencriptarComprimido() {
+    std::cout << "--------------- ARQUIVO DESCRIPTOGRAFADO : ---------------------" << std::endl;    
     char key = 'X'; // Mesma Chave simples de encriptação usando o XOR
     std::ifstream inputFile(this->arquivoDescompactado, std::ios::binary);
-    //std::string outputDecryptedFile = "output_decrypted.txt"; // Name of the decrypted output file
     std::ofstream outputFile(this->arquivoDesencriptado, std::ios::binary);
 
     if (!inputFile.is_open() || !outputFile.is_open()) {
@@ -357,8 +357,11 @@ void Compressor::desencriptarComprimido() {
     while (inputFile.get(ch)) {
         char decryptedChar = ch ^ key; // XOR decryption
         outputFile.put(decryptedChar);
+        std::cout << decryptedChar;
     }
 
     inputFile.close();
     outputFile.close();
+    
+    std::cout << "--------------------------- || ----------------------------------" << std::endl;
 }
