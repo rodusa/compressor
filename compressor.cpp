@@ -282,23 +282,21 @@ void Compressor::imprimirVetor16Bits(const std::vector<bool> &bits)
 
 void Compressor::converterTextoParaBinario()
 {
-    writeCharAsBinaryToFile(arquivoBinario);
+    //writeCharAsBinaryToFile(arquivoBinario);
+    writeCharAsBinaryToFile(arquivoEncriptado, arquivoBinario); // Updated call
 }
 
-void Compressor::writeCharAsBinaryToFile(const std::string &nomeArquivo)
-{
-    std::ifstream arquivoTxtEntrada(this->arquivoTxtEntrada);
-    std::ofstream outputFile(nomeArquivo, std::ios::binary);
+void Compressor::writeCharAsBinaryToFile(const std::string &inputFilePath, const std::string &outputFilePath) {
+    std::ifstream inputFile(inputFilePath, std::ios::binary);
+    std::ofstream outputFile(outputFilePath, std::ios::binary);
 
-    if (!arquivoTxtEntrada || !outputFile)
-    {
+    if (!inputFile || !outputFile) {
         std::cerr << "Erro abrindo arquivos." << std::endl;
         return;
     }
 
     char character;
-    while (arquivoTxtEntrada.get(character))
-    {
+    while (inputFile.get(character)) {
         std::bitset<8> binary(character);
         outputFile << binary;
     }

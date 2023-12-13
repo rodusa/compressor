@@ -40,5 +40,6 @@ private:
     std::vector<std::string> readarquivoCompactado(const std::string &nomeArquivo);
 
     // New private method to write each character as binary to a file
-    void writeCharAsBinaryToFile(const std::string &nomeArquivo);
+    //void writeCharAsBinaryToFile(const std::string &nomeArquivo);
+    void writeCharAsBinaryToFile(const std::string &inputFilePath, const std::string &outputFilePath);
 };
