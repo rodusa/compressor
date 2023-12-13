@@ -4,19 +4,8 @@
 #include <iostream>
 
 int main() {
-    // Este caminho deverá ser mudado para o caminho
-    std::string folder = "/Users/rlueneberg/Documents/data/2023/gabi-c++/project/";
-    
-    std::string arquivoTxtPath = folder + "input.txt"; // Arquivo com texto
-    std::string arquivoBinario = folder + "input.bin"; // Arquivo texto convertido para binário    
-    std::string arquivoCompactadoPath = folder + "input.compressed"; // Arquivo binário compactado    
-    std::string arquivoDescompactadoPath = folder + "input.decompressed"; // Arquivo binário compactado convertido para texto
-    std::string arquivoEncriptadoPath = folder + "input.encrypted"; // Arquivo encriptado
-    std::string arquivoDesencriptadoPath = folder + "outupt.decrypted"; // Arquvivo desencriptado
-    
     std::cout << "\n";
     std::cout << "###### PROGRAMA PARA COMPACTAR E CRIPTOGRAFAR CARACTERES (TEXTO) ######\n";
-    // Display message and wait for Enter
     std::cout << "Este programa utiliza os sequintes arquivos para compressao e criptografia: " << std::endl;    
     std::cout << "\n";
     std::cout << "ARQUIVO TEXTO: input.txt" << std::endl;
@@ -29,6 +18,25 @@ int main() {
     std::cout << "Certifique-se que o arquivo input.txt existe e esta no mesmo local do executavel" << std::endl;
     std::cout << "Pressione ENTER para prosseguir." << std::endl;
     std::cin.get();
+
+    // Este caminho deverá ser mudado para o caminho
+    //std::string folder = "/Users/rlueneberg/Documents/data/2023/gabi-c++/project/";
+    // In windows user C:\\Users\\gabriel\\Desktop\\ProjetoVersaoFinal
+
+    std::string folder;
+    std::cout << "Por favor, insira o caminho da pasta onde está o arquivo input.txt: ";
+    std::getline(std::cin, folder);
+
+    // Substituir todas as barras simples (\) por barras duplas (\\)
+    std::replace(folder.begin(), folder.end(), '\\', '/');
+    
+    std::string arquivoTxtPath = folder + "input.txt"; // Arquivo com texto
+    std::string arquivoBinario = folder + "input.bin"; // Arquivo texto convertido para binário    
+    std::string arquivoCompactadoPath = folder + "input.compressed"; // Arquivo binário compactado    
+    std::string arquivoDescompactadoPath = folder + "input.decompressed"; // Arquivo binário compactado convertido para texto
+    std::string arquivoEncriptadoPath = folder + "input.encrypted"; // Arquivo encriptado
+    std::string arquivoDesencriptadoPath = folder + "outupt.decrypted"; // Arquvivo desencriptado
+    
 
     // Atualize a chamada do construtor para incluir o novo argumento.
     Compressor compressor(arquivoTxtPath, arquivoCompactadoPath, arquivoDescompactadoPath, arquivoBinario, arquivoEncriptadoPath, arquivoDesencriptadoPath);

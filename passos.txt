@@ -7,3 +7,5 @@
 1. Entre com o texto no arquivo input.txt
 
 g++ -std=c++17 -o programa  main.cpp compressor.cpp 
+
+caminho: /Users/rlueneberg/Documents/data/2023/gabi-c++/project/
