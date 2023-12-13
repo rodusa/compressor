@@ -4,16 +4,19 @@
 #include <iostream>
 #include <bitset>
 
-Compressor::Compressor(const std::string &arquivoTxtEntrada, 
+Compressor::Compressor(const std::string &arquivoTxt, 
                        const std::string &arquivoCompactado, 
                        const std::string &arquivoDescompactado, 
                        const std::string &convertedFile,
-                       const std::string &arquivoEncriptado) // Add this parameter
-    : arquivoTxtEntrada(arquivoTxtEntrada), 
+                       const std::string &arquivoEncriptado,
+                       const std::string &arquivoDesencriptado
+                       ) // Add this parameter
+    : arquivoTxt(arquivoTxt), 
       arquivoCompactado(arquivoCompactado), 
       arquivoDescompactado(arquivoDescompactado), 
       arquivoBinario(convertedFile),
-      arquivoEncriptado(arquivoEncriptado) // Initialize the member variable
+      arquivoEncriptado(arquivoEncriptado),
+      arquivoDesencriptado(arquivoDesencriptado) // Initialize the member variable
 {
     construirDicionarios();
 }
@@ -21,7 +24,9 @@ Compressor::Compressor(const std::string &arquivoTxtEntrada,
 
 void Compressor::comprimirBinario()
 {
-    auto dadosBinarios = lerArquivoParaBinario(arquivoTxtEntrada);
+    //auto dadosBinarios = lerArquivoParaBinario(arquivoTxt);
+    auto dadosBinarios = lerArquivoParaBinario(arquivoEncriptado);
+    
     imprimirVetor16Bits(dadosBinarios);
     auto dadosComprimidos = compressData(dadosBinarios);
     escreverComprimidoParaArquivo(dadosComprimidos, arquivoCompactado);
@@ -317,10 +322,9 @@ void Compressor::lerDescomprimido() {
     std::cout << "--------------------------- || ----------------------------------" << std::endl;
 }
 
-
 void Compressor::encriptarArquivoTexto() {
-    char key = 'X'; // Simple XOR encryption key
-    std::ifstream inputFile(this->arquivoTxtEntrada, std::ios::binary);
+    char key = 'X'; // Chave simples de encriptação usando o XOR
+    std::ifstream inputFile(this->arquivoTxt, std::ios::binary);
     std::ofstream outputFile(this->arquivoEncriptado, std::ios::binary);
 
     if (!inputFile.is_open() || !outputFile.is_open()) {
@@ -332,6 +336,27 @@ void Compressor::encriptarArquivoTexto() {
     while (inputFile.get(ch)) {
         char encryptedChar = ch ^ key; // XOR encryption
         outputFile.put(encryptedChar);
+    }
+
+    inputFile.close();
+    outputFile.close();
+}
+
+void Compressor::desencriptarComprimido() {
+    char key = 'X'; // Mesma Chave simples de encriptação usando o XOR
+    std::ifstream inputFile(this->arquivoDescompactado, std::ios::binary);
+    //std::string outputDecryptedFile = "output_decrypted.txt"; // Name of the decrypted output file
+    std::ofstream outputFile(this->arquivoDesencriptado, std::ios::binary);
+
+    if (!inputFile.is_open() || !outputFile.is_open()) {
+        std::cerr << "Error opening files for decryption." << std::endl;
+        return;
+    }
+
+    char ch;
+    while (inputFile.get(ch)) {
+        char decryptedChar = ch ^ key; // XOR decryption
+        outputFile.put(decryptedChar);
     }
 
     inputFile.close();
