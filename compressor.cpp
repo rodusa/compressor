@@ -180,7 +180,7 @@ std::vector<bool> Compressor::descomprimirDados(const std::vector<std::string> &
 {
     std::vector<bool> dadosDescomprimidos;
     std::cout << "\033[32m"; // Set text color to green
-    std::cout << "--------------- USANDO DICIONÁRIO DE SÍMBOLOS PARA DESCOMPACTAR DADOS : ---------" << std::endl;    
+    std::cout << "--------------- USANDO DICIONARIO DE SIMBOLOS PARA DESCOMPACTAR DADOS : ---------" << std::endl;    
     std::cout << "\033[0m"; // Reset text color to default
     //std::cout << "Descompactando dados... " << std::endl;
  
@@ -209,7 +209,7 @@ std::vector<bool> Compressor::descomprimirDados(const std::vector<std::string> &
 
     // Additional debugging: print the entire decompressed binary sequence
     std::cout << "\033[32m"; // Set text color to green
-    std::cout << "--------------- DESCOMPRESSÃO DOS DADOS BINÁRIOS : ---------" << std::endl;    
+    std::cout << "--------------- DESCOMPRESSAO DOS DADOS BINARIOS : ---------" << std::endl;    
     std::cout << "\033[0m"; // Reset text color to default
     for (bool bit : dadosDescomprimidos)
     {
@@ -312,7 +312,7 @@ void Compressor::writeCharAsBinaryToFile(const std::string &inputFilePath, const
 }
 
 void Compressor::lerDescomprimido() {
-    std::cout << "--------------- CONTEÚDO DO ARQUIVO DESCOMPACTADO : ---------------------" << std::endl;    
+    std::cout << "--------------- CONTEUDO DO ARQUIVO DESCOMPACTADO : ---------------------" << std::endl;    
     std::ifstream decompressedFile(this->arquivoDescompactado);  // Use the member variable for the file path
     if (!decompressedFile) {        
         std::cerr << "Erro ao abrir o arquivo descompactado para leitura: " << this->arquivoDescompactado << std::endl;

@@ -17,16 +17,16 @@ int main() {
     std::cout << "\n";
     std::cout << "###### PROGRAMA PARA COMPACTAR E CRIPTOGRAFAR CARACTERES (TEXTO) ######\n";
     // Display message and wait for Enter
-    std::cout << "Este programa utiliza os sequintes arquivos para compressão e criptografia: " << std::endl;    
+    std::cout << "Este programa utiliza os sequintes arquivos para compressao e criptografia: " << std::endl;    
     std::cout << "\n";
     std::cout << "ARQUIVO TEXTO: input.txt" << std::endl;
     std::cout << "ARQUIVO ENCRIPTADO: input.encrypted" << std::endl;
-    std::cout << "ARQUIVO ENCRIPTADO P/ BINÁRIO: input.bin" << std::endl;
+    std::cout << "ARQUIVO ENCRIPTADO P/ BINARIO: input.bin" << std::endl;
     std::cout << "ARQUIVO BINÁRIO COMPACTADO: input.compressed " << std::endl;
     std::cout << "ARQUIVO DESCOMPACTADO: decompressed.txt" << std::endl;
     std::cout << "ARQUIVO DESCRIPTOGRAFADO: outupt.decrypted" << std::endl;
     std::cout << "\n";
-    std::cout << "Certifique-se que o arquivo input.txt existe e está no mesmo local do executável" << std::endl;
+    std::cout << "Certifique-se que o arquivo input.txt existe e esta no mesmo local do executavel" << std::endl;
     std::cout << "Pressione ENTER para prosseguir." << std::endl;
     std::cin.get();
 
