@@ -33,7 +33,7 @@ private:
     std::string arquivoDesencriptado;
     
     std::unordered_map<std::string, std::string> bitsDictionary;
-    std::unordered_map<std::string, std::string> debitsDictionary;
+    std::unordered_map<std::string, std::string> dictDescompressao;
 
     void construirDicionarios();
     std::vector<bool> lerArquivoParaBinario(const std::string &nomeArquivo);

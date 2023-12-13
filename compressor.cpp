@@ -62,7 +62,7 @@ void Compressor::construirDicionarios()
     // Build the decompression dictionary
     for (const auto &pair : bitsDictionary)
     {
-        debitsDictionary[pair.second] = pair.first;
+        dictDescompressao[pair.second] = pair.first;
     }
 }
 
@@ -184,9 +184,9 @@ std::vector<bool> Compressor::descomprimirDados(const std::vector<std::string> &
     for (const auto &code : dadosComprimidos)
     {
         std::cout << "Code: " << code << " ";
-        if (debitsDictionary.find(code) != debitsDictionary.end())
+        if (dictDescompressao.find(code) != dictDescompressao.end())
         {
-            std::string sequence = debitsDictionary[code];
+            std::string sequence = dictDescompressao[code];
             std::cout << "Sequencia: " << sequence << " ";
             
             for (char bit : sequence)
@@ -251,7 +251,7 @@ std::vector<std::string> Compressor::readarquivoCompactado(const std::string &no
     {
         code.push_back(ch);
         // Check if this sequence of characters matches any code in the decompression dictionary
-        if (debitsDictionary.find(code) != debitsDictionary.end())
+        if (dictDescompressao.find(code) != dictDescompressao.end())
         {
             dadosComprimidos.push_back(code);
             code.clear(); // Reset the code string for the next sequence
